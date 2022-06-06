@@ -170,7 +170,6 @@ button:focus,button:active{
         display: flex;
         flex-direction: row;
         justify-content: center;
-        flex-wrap: wrap;
     }
     
     
@@ -206,10 +205,24 @@ button:focus,button:active{
     }
     #userChoise, #pcChoise{
         margin-bottom: 20px;
+        width: 150px;
      }
 
      #comment{
          font-size: 25px;
+     }
+
+     h3 {
+         font-size: 15px;
+        
+     }
+
+     img{
+         height: 100px;
+     }
+
+     section{
+         margin: 10px;
      }
 
   }
