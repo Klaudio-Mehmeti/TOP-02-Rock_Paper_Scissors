@@ -212,7 +212,13 @@ button:focus,button:active{
          font-size: 25px;
          margin: 10px;
      }
+     h1{
+         font-size: 20px;
+     }
 
+     header{
+         height: 10vh;
+     }
      h3 {
          font-size: 15px;
         
