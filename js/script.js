@@ -1,79 +1,164 @@
 "use strict";
 
-/*-----Random Output Function------*/
 
-var myArray = ['ROCK', 'PAPER', 'SCISSORS'];
+let rockBtn = document.querySelector("#rock");
+let paperBtn = document.querySelector("#paper");
+let scissorsBtn = document.querySelector("#scissors");
+
+let resetBtn = document.querySelector("#reset");
+
+let comment = document.querySelector("#comment");
+
+let scoreUser = 0;
+let scorePc = 0;
+let gameOver = false;
+let limit = 5;
+
+let scoreUserDisplay = document.querySelector("#scoreUser");
+
+let scorePcDisplay = document.querySelector("#scorePc");
+
+
+/*-----PC Output Function------*/
+
+var myArray = ['Rock', 'Paper', 'Scissors'];
 
 function computerPlay() {
     return myArray[Math.floor(Math.random() * myArray.length)];
 }
 
 
-/*-----Game Play Round Function------*/
 
+/*-----ROCK Paper Button------*/
 
+rockBtn.addEventListener("click", function () {
 
-function playRound(playerSelection, computerSelection) {
-
-    if (playerSelection == computerSelection) {
-        return "Is a draw. Try again!"
-    }
-    else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-        return "Rock beat Scissors. You Won :)!"
-    }
-    else if (playerSelection == "ROCK" && computerSelection == "PAPER") {
-        return "Rock don't beat Paper. You lost :("
-    }
-    else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-        return "Paper beat Rock. You Won :)!"
-    }
-    else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
-        return "Paper don't beat Scissors. You lost :("
+    let pcScore = computerPlay();
+    if (!gameOver) {
+        pcChoise.textContent = pcScore;
     }
 
-    else if (playerSelection == "SCISSORS" && computerPlay == "ROCK") {
-        return "Scissors don't beat Rock. You lost :("
+    if (pcScore === "Paper" && !gameOver) {
+        scorePc += 1;
+        scorePcDisplay.textContent = scorePc;
+        comment.textContent = "Paper Beats Rock! You Lost :("
     }
-    else if (playerSelection == "SCISSORS" && computerPlay == "PAPER") {
-        return "Scissors beat Paper. You Won :)!"
+
+    else if (pcScore === "Scissors" && !gameOver) {
+        scoreUser += 1;
+        scoreUserDisplay.textContent = scoreUser;
+        comment.textContent = "Rock Beats Scissors! You Won :)"
     }
-    else if (playerSelection != myArray) {
-        return "Wrong input. Try again!"
+
+    else {
+        comment.textContent = "It's a tie! :0  "
     }
-};
+
+    if (!gameOver) {
+        userChoise.textContent = "Rock";
+    }
 
 
-// const playerSelection = prompt("Insert Rock, Paper or Scissors!").toUpperCase();
+    scoreCheck();
 
-// const computerSelection = computerPlay();
-
-
-// console.log(playRound(playerSelection, computerSelection));
-
-/*-----Game 5 rounds Function------*/
-
+})
 
 
 
-function game() {
-    const playerSelection = prompt("Insert Rock, Paper or Scissors!").toUpperCase();
-    const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
-};
+/*-----Function Paper Button------*/
+
+paperBtn.addEventListener("click", function () {
+
+    let pcScore = computerPlay();
+    if (!gameOver) {
+        pcChoise.textContent = pcScore;
+    }
+
+    if (pcScore == "Scissors" && !gameOver) {
+        scorePc += 1;
+        scorePcDisplay.textContent = scorePc;
+        comment.textContent = "Scissors Beats Paper! You Lost :("
+    }
+
+    else if (pcScore == "Rock" && !gameOver) {
+        scoreUser += 1;
+        scoreUserDisplay.textContent = scoreUser;
+        comment.textContent = "Paper Beats Rock! You Won :)"
+    }
+
+    else {
+        comment.textContent = "It's a tie! :0  "
+    }
+
+    if (!gameOver) {
+        userChoise.textContent = "Paper";
+    }
+
+    scoreCheck();
+
+});
 
 
+/*-----SCISSORS Paper Button------*/
+
+scissorsBtn.addEventListener("click", function () {
+
+    let pcScore = computerPlay();
+    if (!gameOver) {
+        pcChoise.textContent = pcScore;
+    }
+
+    if (pcScore == "Rock" && !gameOver) {
+        scorePc += 1;
+        scorePcDisplay.textContent = scorePc;
+        comment.textContent = "Rock Beats Scissors! You Lost :("
+    }
+
+    else if (pcScore == "Paper" && !gameOver) {
+        scoreUser += 1;
+        scoreUserDisplay.textContent = scoreUser;
+        comment.textContent = "Scissors Beats Paper! You Won :)"
+    }
+
+    else {
+        comment.textContent = "It's a tie! :0 "
+    };
+
+    if (!gameOver) {
+        userChoise.textContent = "Scissors";
+    }
+
+    scoreCheck();
 
 
+});
 
-for (let i = 0; i < 5; i++) {
-    game();
-};
+/*-----Score Check Function------*/
 
+let scoreCheck = function () {
+    if (scorePc === limit) {
+        comment.textContent = "GAME OVER! YOU LOST :(  :(  :(";
+        gameOver = true;
+    }
+    else if (scoreUser === limit) {
+        comment.textContent = "YOU WON THE GAME!!! :)  :)  :)";
+        gameOver = true;
+    }
 
+    if (scoreUser === 5 || scorePc === 5) {
+        document.getElementById("reset").style.display = 'block';
+    }
 
+    else {
+        document.getElementById("reset").style.display = 'none';
+    }
 
+}
 
+/*-----RESET------*/
 
-
+reset.addEventListener("click", function () {
+    window.location.reload();
+})
 
 

@@ -1,13 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <title>Rock_Paper_Scissors</title>
 </head>
 <body>
-    
+    <header>
+        <h1> ROCK PAPER SCISSORS </h1>
+    </header>
+    <main id="main">
+        <section id="score">
+
+            <div>
+                <h2 id="scoreUser">0</h2>
+                <div id="scoreText">
+                    <h3>User</h3>
+                    <h3 id="userChoise">?</h3>
+                </div>
+            </div>
+            
+            <h2 id="scoreDividor"> - </h2>
+
+            <div>
+                <h2 id="scorePc">0</h2>
+                <div id="scoreText">
+                    <h3>Computer</h3>
+                    <h3 id="pcChoise">?</h3>
+                </div>
+            </div>
+
+
+        </section>
+
+        <section id="comment"> <h2>Let's Start!</h2>
+        </section>
+
+        <section id="icons">
+            <div id="rock">
+                <button type="submit"><img src="/img/Rock.png" height="150"></button>
+                <h3>Rock</h3>
+            </div>
+
+            <div id="paper" >
+                <button type="submit"><img src="/img/Paper.png" height="150"></button>
+                <h3>Paper</h3>
+            </div>
+
+            <div id="scissors">
+                <button  type="submit"><img src="/img/Scissors.png" height="150"></button>
+                <h3>Scissors</h3>
+            </div>
+        </section>
+
+        <section  >
+            <div id="reset">Play Again!</div>
+        </section>
+
+    </main>
+    <footer>
+        <h4>Copyright © 2022 Klaudio Mehmeti</h4><p>The Odin Project Exercise</p>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
+
 </html>
